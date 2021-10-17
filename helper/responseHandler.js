@@ -1,4 +1,4 @@
-const successHandler = (res, message, result= null) => {
+const successHandler = (res, message, result) => {
     res.status(200).json({message, result})
 }
 
