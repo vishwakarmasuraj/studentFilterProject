@@ -26,5 +26,26 @@ const studentListing = async (req, res) => {
     }
 }
 
+const studentFilterRecord = async (req, res) => {
+    try {
+        console.log(req.query)
+        const sort = {}
+        if(req.query.fromDate && req.query.toDate){
+          sort[req.query.fromDate] = req.query.toDate 
+        }
+        
+        const result = await Student.find({
+            created_at: {
+                $gte: ("2015-05-05T00:00:00.000Z"),
+                $lt: ("2018-01-01T00:00:00.000Z")
+            }
+        })
+        successHandler(res, constants.STD_AVAIL_MSG, result)
+    } catch (error) {
+        console.error(error)
+        errorHandler(res)
+    }
+}
 
-module.exports = {addStudent, studentListing}
+
+module.exports = {addStudent, studentListing, studentFilterRecord}
