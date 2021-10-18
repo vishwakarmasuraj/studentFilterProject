@@ -28,7 +28,7 @@ const studentListing = async (req, res) => {
 const studentFilterRecord = async (req, res) => {
   try {
     let { startDate, endDate } = req.query
-    if (startDate || endDate) {
+    if (!startDate || !endDate) {
       return res
         .status(400)
         .json({ message: 'please ensure you pick two dates' })
