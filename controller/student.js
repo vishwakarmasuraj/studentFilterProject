@@ -28,7 +28,7 @@ const studentListing = async (req, res) => {
 
 const studentFilterRecord = async (req, res) => {
     try {
-        const result = await Student.find({$match: {name: req.query.name}})
+        const result = await Student.find({})
         successHandler(res, constants.STD_AVAIL_MSG, result)
     } catch (error) {
         console.error(error)
